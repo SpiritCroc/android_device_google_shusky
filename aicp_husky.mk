@@ -6,7 +6,7 @@
 
 # Inherit some common Lineage stuff.
 TARGET_DISABLE_EPPE := true
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/aicp/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/google/shusky/aosp_husky.mk)
@@ -17,7 +17,7 @@ include device/google/shusky/husky/device-lineage.mk
 # Device identifier. This must come after all inclusions
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 8 Pro
-PRODUCT_NAME := lineage_husky
+PRODUCT_NAME := aicp_husky
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2992
@@ -30,3 +30,10 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT := google/husky/husky:14/AP2A.240905.003/12231197:user/release-keys
 
 $(call inherit-product, vendor/google/husky/husky-vendor.mk)
+
+# AICP Device Maintainers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    DEVICE_MAINTAINERS="SpiritCroc"
+
+# Overwrite stricter requirements from AOSP build
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
