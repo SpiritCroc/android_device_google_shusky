@@ -6,28 +6,35 @@
 
 # Inherit some common stuff
 TARGET_DISABLE_EPPE := true
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/aicp/config/common_full_phone.mk)
 
 # Inherit device configuration
-DEVICE_CODENAME := husky
+DEVICE_CODENAME := shiba
 DEVICE_PATH := device/google/shusky
-VENDOR_PATH := vendor/google/husky
+VENDOR_PATH := vendor/google/shiba
 $(call inherit-product, $(DEVICE_PATH)/aosp_$(DEVICE_CODENAME).mk)
 $(call inherit-product, device/google/zuma/lineage_common.mk)
 $(call inherit-product, $(DEVICE_PATH)/$(DEVICE_CODENAME)/device-lineage.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_BRAND := google
-PRODUCT_MODEL := Pixel 8 Pro
-PRODUCT_NAME := lineage_$(DEVICE_CODENAME)
+PRODUCT_MODEL := Pixel 8
+PRODUCT_NAME := aicp_$(DEVICE_CODENAME)
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 2992
-TARGET_SCREEN_WIDTH := 1344
+TARGET_SCREEN_HEIGHT := 2400
+TARGET_SCREEN_WIDTH := 1080
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="husky-user 15 BP1A.250505.005.B1 13277630 release-keys" \
-    BuildFingerprint=google/husky/husky:15/BP1A.250505.005.B1/13277630:user/release-keys \
+    BuildDesc="shiba-user 15 BP1A.250505.005.B1 13277630 release-keys" \
+    BuildFingerprint=google/shiba/shiba:15/BP1A.250505.005.B1/13277630:user/release-keys \
     DeviceProduct=$(DEVICE_CODENAME)
 
 $(call inherit-product, $(VENDOR_PATH)/$(DEVICE_CODENAME)-vendor.mk)
+
+# AICP Device Maintainers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    DEVICE_MAINTAINERS="SpiritCroc"
+
+# Overwrite stricter requirements from AOSP build
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
