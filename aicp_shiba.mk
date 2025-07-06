@@ -38,3 +38,9 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # Overwrite stricter requirements from AOSP build
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
+
+# Enable Secure Debugging
+ifneq ($(TARGET_BUILD_VARIANT),eng)
+  PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
+  PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=1
+endif
