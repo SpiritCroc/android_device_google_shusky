@@ -12,7 +12,7 @@ $(call inherit-product, vendor/aicp/config/common_full_phone.mk)
 DEVICE_CODENAME := shiba
 DEVICE_PATH := device/google/shusky
 VENDOR_PATH := vendor/google/shiba
-$(call inherit-product, $(DEVICE_PATH)/aosp_$(DEVICE_CODENAME)_pgagnostic.mk)
+$(call inherit-product, $(DEVICE_PATH)/aosp_$(DEVICE_CODENAME).mk)
 $(call inherit-product, device/google/zuma/lineage_common.mk)
 $(call inherit-product, $(DEVICE_PATH)/$(DEVICE_CODENAME)/device-lineage.mk)
 
